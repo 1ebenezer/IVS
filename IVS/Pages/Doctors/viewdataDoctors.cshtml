@@ -1,0 +1,40 @@
+﻿@page
+@model IVS.Pages.Doctors.viewdataModel
+@{
+}
+@*HTML CODES GO HERE*@
+
+
+<style>
+	h2 {
+		margin-bottom: 20px;
+	}
+
+	form {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+	}
+
+	label {
+		margin-right: 10px;
+	}
+
+	input {
+		margin-right: 10px;
+	}
+
+	button {
+		margin-left: 10px;
+		background-color: blue;
+		color: white;
+	}
+</style>
+<h2>Welcome Doctor</h2>
+<form>
+	<label for="insurance">Insurance of the Patient:</label>
+	<input type="text" id="insurance" name="insurance">
+	<label for="medicine">Medicine:</label>
+	<input type="text" id="medicine" name="medicine">
+	<button type="submit">Search</button>
+</form>
