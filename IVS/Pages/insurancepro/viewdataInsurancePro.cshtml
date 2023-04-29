@@ -3,38 +3,37 @@
 @{
 }
 @*HTML CODES GO HERE*@
+<br/>
+<h2> VIEW DATA</h2>
+<a class=<'btn btn-primary btn-sm' href='/insurancepro/create'>New Record</a>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Coverage ID</th>
+            <th>Company</th>
+            <th>Medecin Name</th>
+            <th>Coverage_status</th>
+            <th>Updated By</th>
+            <th>Actions</th>
 
-
-<style>
-	h2 {
-		margin-bottom: 20px;
-	}
-
-	form {
-		display: flex;
-		flex-direction: row;
-		align-items: center;
-	}
-
-	label {
-		margin-right: 10px;
-	}
-
-	input {
-		margin-right: 10px;
-	}
-
-	button {
-		margin-left: 10px;
-		background-color: green;
-		color: white;
-	}
-</style>
-<h2>Welcome to the System</h2>
-<form>
-	<label for="insurance">Insurance company</label>
-	<input type="text" id="insurance" name="insurance">
-	<label for="medicine">Medicine:</label>
-	<input type="text" id="medicine" name="medicine">
-	<button type="submit">COVERAGE</button>
-</form>
+        </tr>
+    </thead>
+    </thead>
+            <tbody>
+            @foreach (var item in Model.coveragelist)
+            {
+            <tr>
+            <td>@item.coverageid</td>
+            <td>@item.company</td>
+            <td>@item.medecin_name</td>
+            <td>@item.coverage_status</td>
+            <td>@item.updatedby</td>
+            <td>
+            <a class="btn btn-primary btn-sm" href="/insurancepro/Edit?id=@item.coverageid">Edit</a>
+            <a class="btn btn-danger btn-sm" href="/insurancepro/Delete?id=@item.coverageid">Delete</a>
+            </td>
+            </tr>
+            }
+            </tbody>
+            
+</table>
