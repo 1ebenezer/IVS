@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Insurance Page</title>
+    <title>INSERT NEW RECORD</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
@@ -37,66 +37,58 @@
             }
 
             .form-row input[type="text"] {
-                flex: 0.2;
-            }
-
-        table {
-            border-collapse: collapse;
-            width: 100%;
-            margin-top: 20px;
-        }
-
-        th, td {
-            text-align: left;
-            padding: 8px;
-        }
-
-        th {
-            background-color: #080808;
-        }
-
-        tr:hover {
-            background-color: #645d5d;
-        }
-
-        button {
-            background-color: green;
-            color: white;
-            border: none;
-            padding: 10px 10px;
-            margin: 10px;
-        }
-
+                flex: 0.2;}
+          
     </style>
 </head>
 <body>
-    <h1>Insurance Page</h1>
-    <form>
+    <h1>INSERT NEW RECORD</h1>
+    @if (Model.errorMessage.Length > 0)
+    {
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            <strong>@Model.errorMessage</strong>
+            <button type="button" class=" btn-close" data-bs-dismiss="alert" aria-label="close"></button>
+        </div>
+    }
+    <form method="POST">
         <div class="form-row">
             <label for="coverageID">Coverage ID:</label>
-            <input type="text" id="coverageID" name="coverageID">
+            <input type="text" id="coverageid" name="coverageid" value="@Model.coverage.coverageid"/>
             <label for="company">Company:</label>
             <input type="text" id="company" name="company">
-
         </div>
         <div class="form-row">
             <label for="coverage">Coverage status:</label>
-            <input type="text" id="coverage" name="coverage">
+            <input type="text" id="coverage_status" name="coverage_status">
             <label for="updatedBy">Updated By:</label>
-            <input type="text" id="updatedBy" name="updatedBy">
+            <input type="text" id="updatedby" name="updatedby">
         </div>
         <div class="form-row">
             <label for="medecinName">Medecin Name:</label>
-            <input type="text" id="medecinName" name="medecinName">
+            <input type="text" id="medecin_name" name="medecin_name">
         </div>
-        <div class="button-container" style="text-align: center;">
-            <button type="submit">Save</button>
-            <button type="reset">View</button>
-            <button type="button" id="editButton">Edit</button>
-            <button type="button" id="deleteButton">Delete</button>
+        @if (Model.successMessage.Length > 0)
+            {
+            <div class="row mb-3">
+                <div class="col-sm-9">
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <strong>@Model.successMessage</strong>
+                <button  type="button" class="btn-close" data-bs-dismiss="alert" aria-label="close"><button/>
+                      </div>
+                     </div>
+                 </div>
+            }
+        <div class="row mb-3 justify-content-center">
+            <div class="col-sm-3 d-grid">
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+            <div class="col-sm-3 d-grid">
+                <a class="btn btn-primary cancel" href="/" role="button">Cancel</a>
+            </div>
         </div>
+
     </form>
-    </body>
+  </body>
 </html>
 
 

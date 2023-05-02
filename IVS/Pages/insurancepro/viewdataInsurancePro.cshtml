@@ -30,7 +30,8 @@
             <td>@item.updatedby</td>
             <td>
             <a class="btn btn-primary btn-sm" href="/insurancepro/Edit?id=@item.coverageid">Edit</a>
-            <a class="btn btn-danger btn-sm" href="/insurancepro/Delete?id=@item.coverageid">Delete</a>
+  <a class="btn btn-danger btn-sm" href="/insurancepro/delete?id=@item.coverageid" onclick="return confirm('Are you sure you want to delete this record?');">Delete</a>
+
             </td>
             </tr>
             }

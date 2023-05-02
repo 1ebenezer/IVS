@@ -1,4 +1,27 @@
 ﻿@page
-@model IVS.Pages.insurancepro.deleteModel
+@using System.Data.SqlClient;
 @{
+    try 
+        {
+        String coverageid = Request.Query["id"];
+
+        String connectionString = "Data Source=DESKTOP-18JPE9U\\SQLEXPRESS;Initial Catalog=verificationdb;Integrated Security=True";
+        using (SqlConnection conn = new SqlConnection(connectionString))
+        {
+            conn.Open();
+            String sqlQuery = "DELETE FROM coverage WHERE coverageid=@coverageid";
+            using (SqlCommand cmd = new SqlCommand(sqlQuery, conn))
+
+            {
+                cmd.Parameters.AddWithValue("@coverageid", Convert.ToInt32(coverageid));
+             
+                cmd.ExecuteNonQuery();
+            }
+        }
+        }
+    catch (Exception ex)
+        {
+        @:Error: @ex.Message
+        }
+    Response.Redirect("/insurancepro/viewdataInsurancePro");
 }

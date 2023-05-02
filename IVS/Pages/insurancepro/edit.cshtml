@@ -2,3 +2,92 @@
 @model IVS.Pages.insurancepro.editModel
 @{
 }
+<!DOCTYPE html>
+<html>
+<head>
+    <title>EDIT RECORD</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            background-color: #2c2c2c;
+            color: #fff;
+            font-family: Arial, sans-serif;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        form {
+            max-width: 900px;
+            margin: auto;
+        }
+
+        .form-row {
+            display: inline-flex;
+            margin-bottom: 50px;
+        }
+
+            .form-row label {
+                width: 150px;
+                margin-right: 10px;
+            }
+
+            .form-row input[type="text"] {
+                flex: 0.2;
+
+    </style>
+</head>
+<body>
+    <h1>EDIT RECORD</h1>
+    @if (Model.errorMessage.Length > 0)
+    {
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            <strong>@Model.errorMessage</strong>
+            <button type="button" class=" btn-close" data-bs-dismiss="alert" aria-label="close"></button>
+        </div>
+    }
+    <form method="POST">
+    <input type="hidden" name="id"  value="@Model.coverage.coverageid"/>
+        <div class="form-row">
+            <label for="coverageID">Coverage ID:</label>
+            <input type="text" id="coverageid" name="coverageid" value="@Model.coverage.coverageid" />
+            <label for="company">Company:</label>
+            <input type="text" id="company" name="company" value="@Model.coverage.company">
+        </div>
+        <div class="form-row">
+            <label for="coverage">Coverage status:</label>
+            <input type="text" id="coverage_status" name="coverage_status" value="@Model.coverage.coverage_status">
+            <label for="updatedBy">Updated By:</label>
+            <input type="text" id="updatedby" name="updatedby" value="@Model.coverage.updatedby">
+        </div>
+        <div class="form-row">
+            <label for="medecinName">Medecin Name:</label>
+            <input type="text" id="medecin_name" name="medecin_name" value="@Model.coverage.medecin_name">
+        </div>
+        @if (Model.successMessage.Length > 0)
+        {
+            <div class="row mb-3">
+                <div class="col-sm-9">
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        <strong>@Model.successMessage</strong>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="close"><button />
+                    </div>
+                </div>
+            </div>
+        }
+        <div class="row mb-3 justify-content-center">
+            <div class="col-sm-3 d-grid">
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+            <div class="col-sm-3 d-grid">
+                <a class="btn btn-primary cancel" href="/" role="button">Cancel</a>
+            </div>
+        </div>
+
+    </form>
+</body>
+</html>

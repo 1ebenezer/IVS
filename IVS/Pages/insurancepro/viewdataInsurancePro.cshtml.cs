@@ -20,14 +20,14 @@ namespace IVS.Pages.insurance_provider
                 using (SqlConnection conn = new SqlConnection(connectionString))
                 {
                     conn.Open();
-                    String sqlQuery = "SELECT coverageId, company, medecin_name, coverage_status, updatedby FROM coverage";
+                    String sqlQuery = "SELECT coverageid, company, medecin_name, coverage_status, updatedby FROM coverage";
                     using (SqlCommand cmd = new SqlCommand(sqlQuery, conn))
                     using (SqlDataReader reader = cmd.ExecuteReader())
                     {
                         while (reader.Read())
                         {
                             coverageinfo coverage = new coverageinfo();
-                            coverage.coverageid = reader.GetInt32(0);
+                            coverage.coverageid = "" + reader.GetInt32(0);
                             coverage.coverage_status = reader.GetString(1);
                             coverage.company = reader.GetString(2);
                             coverage.medecin_name = reader.GetString(3);
@@ -46,7 +46,7 @@ namespace IVS.Pages.insurance_provider
 
         public class coverageinfo
         {
-            public int coverageid;
+            public string coverageid;
             public string coverage_status;
             public string company;
             public string medecin_name;
